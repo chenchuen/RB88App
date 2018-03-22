@@ -1,4 +1,5 @@
 {
-  "name": "RB88",
-  "displayName": "RB88"
+  "expo": {
+    "sdkVersion": "18.0.0"
+  }
 }

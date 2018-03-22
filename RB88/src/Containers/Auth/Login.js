@@ -1,24 +1,44 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import TextField from 'react-native-md-textinput';
 
 import ReduxActions from '../../Redux/Actions';
 import styles from './Styles';
 
 class LoginScreen extends Component {
   constructor(props) {
-    super(props);
-    this.state = { text: 'Useless Placeholder' };
+      super(props);
+
+      this.state = {
+        username: '',
+        password: '',
+      };
   }
+
+  _handleTextChanged = (text, property) => {
+    this.setState({
+      [property]: text
+    });
+  }
+
+  _handleLoginPlayer = () => {
+    const credential = {
+      username: this.state.username,
+      password: this.state.password
+    };
+    this.props.LoginPlayer(credential);
+  }
+
   render() {
       return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text>Login Screen</Text>
-          <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-            onChangeText={(text) => this.setState({ text })}
-            value={this.state.text}
+          <TextField
+            label={'Name'}
+            highlightColor={'#00BCD4'}
+            keyboardType={'default'}
           />
         </View>
       );
@@ -32,7 +52,7 @@ const mapStateToProps = state => ({
 export function mapDispatchToProps(dispatch) {
     return {
         userLogin: (email, password) => () => {
-            dispatch(ReduxActions.setLoginAttempt(email, password));
+            dispatch(ReduxActions.authLoginAttempt(email, password));
         },
         dispatch,
     };

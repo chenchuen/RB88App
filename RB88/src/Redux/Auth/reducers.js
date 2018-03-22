@@ -14,7 +14,7 @@ const setStartUp = (state = INITIAL_STATE, action) => {
   };
 };
 
-const setLoginAttempt = (state = INITIAL_STATE, action) => {
+const setLoginAttempt = (state = INITIAL_STATE) => {
   return {
     ...state,
     loading: true,
@@ -22,15 +22,36 @@ const setLoginAttempt = (state = INITIAL_STATE, action) => {
   };
 };
 
-const setLoginSuccess = (state = INITIAL_STATE, action) => {
+const setLoginSuccess = (state = INITIAL_STATE) => {
   return {
     ...state,
-    ...INITIAL_STATE,
     loading: false
   };
 };
 
 const setLoginFailure = (state = INITIAL_STATE, action) => {
+  return {
+    ...state,
+    loading: false,
+    errorMessage: action.errorMessage
+  };
+};
+
+const setRegisterAttempt = (state = INITIAL_STATE) => {
+  return {
+    ...state,
+    loading: true,
+  };
+};
+
+const setRegisterSuccess = (state = INITIAL_STATE) => {
+  return {
+    ...state,
+    loading: false
+  };
+};
+
+const setRegisterFailure = (state = INITIAL_STATE, action) => {
   return {
     ...state,
     loading: false,
@@ -46,4 +67,8 @@ export default{
   setLoginAttempt,
   setLoginSuccess,
   setLoginFailure,
+
+  setRegisterAttempt,
+  setRegisterSuccess,
+  setRegisterFailure,
 };

@@ -10,5 +10,9 @@ export default {
     [Types.AUTH_LOGIN_SUCCESS]: Reducers.setLoginSuccess,
     [Types.AUTH_LOGIN_FAILURE]: Reducers.setLoginFailure,
 
+    [Types.AUTH_REGISTER_ATTEMPT]: Reducers.setRegisterAttempt,
+    [Types.AUTH_REGISTER_SUCCESS]: Reducers.setRegisterSuccess,
+    [Types.AUTH_REGISTER_FAILURE]: Reducers.setRegisterFailure,
+
   })
 };
