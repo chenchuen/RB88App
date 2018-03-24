@@ -2,6 +2,7 @@ import { AsyncStorage } from 'react-native';
 import { take, call, put } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 
+import { LoginPlayer } from '../../Services/Auth';
 import ReduxActions from '../../Redux/Actions';
 import Types from '../../Redux/Auth/types';
 
@@ -15,6 +16,7 @@ export function* watchAppStartUp() {
 }
 
 export function* handleStartUp() {
+  LoginPlayer();
   const playerPreference = yield call(getPlayerPreference);
   console.log(playerPreference);
   yield put(ReduxActions.authAppStartUp(false));
